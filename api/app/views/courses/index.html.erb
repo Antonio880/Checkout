@@ -1,0 +1,27 @@
+<h1>Gerenciamento de Cursos</h1>
+
+<%= link_to 'Novo Curso', new_admin_course_path, class: 'btn btn-success mb-3' %>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Título</th>
+      <th>Preço (R$)</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @courses.each do |course| %>
+      <tr>
+        <td><%= course.title %></td>
+        <td><%= number_to_currency(course.price_cents / 100.0, unit: 'R$') %></td>
+        <td>
+          <%= link_to 'Editar', edit_admin_course_path(course), class: 'btn btn-sm btn-warning' %>
+          <%= link_to 'Apagar', admin_course_path(course), method: :delete,
+                      data: { confirm: 'Tem certeza?' },
+                      class: 'btn btn-sm btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

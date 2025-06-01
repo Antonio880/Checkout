@@ -1,0 +1,22 @@
+<h1>Editar Curso</h1>
+
+<%= form_with(model: [:admin, @course], local: true) do |form| %>
+  <div class="mb-3">
+    <%= form.label :title, "Título", class: "form-label" %>
+    <%= form.text_field :title, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :description, "Descrição", class: "form-label" %>
+    <%= form.text_area :description, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :price_cents, "Preço (em centavos)", class: "form-label" %>
+    <%= form.number_field :price_cents, class: "form-control" %>
+    <div class="form-text">Digite o valor em centavos. Ex: 1000 para R$ 10,00</div>
+  </div>
+
+  <%= form.submit "Atualizar Curso", class: "btn btn-primary" %>
+  <%= link_to 'Voltar', admin_courses_path, class: "btn btn-secondary ms-2" %>
+<% end %>

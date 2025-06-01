@@ -1,0 +1,27 @@
+<h1>Dashboard Administrativa</h1>
+<div class="row mb-4">
+  <div class="col-md-4">
+    <div class="card text-white bg-primary mb-3">
+      <div class="card-header">Total de Vendas</div>
+      <div class="card-body">
+        <h2 class="card-title"><%= @total_sales %></h2>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card text-white bg-success mb-3">
+      <div class="card-header">Receita Total</div>
+      <div class="card-body">
+        <h2 class="card-title">R$ <%= number_to_currency(@total_revenue, unit: "", separator: ",", delimiter: ".") %></h2>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card text-white bg-info mb-3">
+      <div class="card-header">Cursos Cadastrados</div>
+      <div class="card-body">
+        <h2 class="card-title"><%= @courses_count %></h2>
+      </div>
+    </div>
+  </div>
+</div>

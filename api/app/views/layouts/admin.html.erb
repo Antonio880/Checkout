@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Painel</title>
+  <%= stylesheet_link_tag 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css' %>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="<%= admin_root_path %>">Painel Admin</a>
+    <ul class="navbar-nav ms-auto">
+      <% if admin_user_signed_in? %>
+        <li class="nav-item">
+          <%= link_to 'Dashboard', admin_dashboard_index_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Cursos', admin_courses_path, class: 'nav-link' %>
+        </li>
+      <% end %>
+     <li class="nav-item">
+        <%= button_to 'Sair',
+                      destroy_admin_user_session_path,
+                      method: :delete,
+                      class: 'nav-link btn btn-link',
+                      form: { class: 'd-inline' } %>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="container mt-4">
+  <% if flash[:alert] %>
+    <div class="alert alert-danger"><%= flash[:alert] %></div>
+  <% end %>
+  <% if flash[:notice] %>
+    <div class="alert alert-success"><%= flash[:notice] %></div>
+  <% end %>
+  <%= yield %>
+</div>
+</body>
+</html>
